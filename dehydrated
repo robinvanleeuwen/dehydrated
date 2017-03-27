@@ -738,8 +738,8 @@ sign_domain() {
   
 
 
-  echo "-------------------"
-  echo ${domain}
+  echo "Handeling domain ${domain} for openssl config"
+
   export commonName=${domain}
   printf "[SAN]\nsubjectAltName=%s" "${SAN}" >> "${tmp_openssl_cnf}"
   if [ "${OCSP_MUST_STAPLE}" = "yes" ]; then
