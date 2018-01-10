@@ -12,12 +12,12 @@ echo " - Backup up $OPENSSL_CNF"
 cp $OPENSSL_CNF /tmp/openssl.org
 
 echo " - Replacing domain in new OpenSSL config"
-sed -e "/\[ req_distinguished_name \]/,/^\[/s/commonName = .*/commonName                      = $1/" $OPENSSL_CNF > /tmp/tmp_openssl.cnf
+sed -e "/\[ req_distinguished_name \]/,/^\[/s/commonName = .*/commonName = $1/" $OPENSSL_CNF > /tmp/tmp_openssl.cnf
 
 echo " - Updating $OPENSSL_CNF"
-mv /tmp/tmp_openssl.cnf $OPENSSL_CNF
+cp /tmp/tmp_openssl.cnf $OPENSSL_CNF
 
-/opt/dehydrated/dehydrated -x -c -d $1
+/opt/dehydrated/dehydrated -c -d $1
 
 echo " - Restoring backupped $OPENSSL_CNF"
 cp /tmp/openssl.org $OPENSSL_CNF
