@@ -1,5 +1,5 @@
 #!/usr/local/bin/bash
-echo "Last Run $(date)" > /var/log/replace_single_certificate.log
+echo "Script ran on $(date)" >> /var/log/replace_single_certificate.log
 
 source /usr/local/etc/dehydrated/config
 
